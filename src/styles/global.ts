@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -14,11 +14,18 @@ export const GlobalStyle = createGlobalStyle`
       font-size: 62.5%;
     }
 
+    body {
+      ${({ theme }) => css`
+        background-color: ${theme.colors.gray_800};
+      `}
+    }
+
     body,
     input,
     textarea,
     button {
-      font-family: var(--font-inter);
+      font-family: 'Poppins', sans-serif;
+
     }
 
     button {

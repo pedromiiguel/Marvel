@@ -13,7 +13,7 @@ export default {
     family: 'var(--font-inter)',
     light: 300,
     normal: 400,
-    bold: 600,
+    bold: 700,
     sizes: {
       xxxxsmall: '0.8rem',
       xxxsmall: '1.2rem',
@@ -33,6 +33,7 @@ export default {
     gray_50: '#F3F5F6',
     gray_200: '#737380',
     gray_300: '#5D5D6D',
+    gray_800: '#202024',
     black: '#0D0D0D',
     red: '#de3838'
   },
