@@ -1,7 +1,8 @@
 import { SearchInput } from '.'
 import userEvent from '@testing-library/user-event'
-import { render, screen, waitFor } from '../../utils/test-utils'
+import { act, render, screen, waitFor } from '../../utils/test-utils'
 
+jest.useFakeTimers()
 describe('<SearchInput/>', () => {
   it('should render correctly', () => {
     render(<SearchInput />)
@@ -22,18 +23,21 @@ describe('<SearchInput/>', () => {
     expect(screen.getByLabelText(/Ícone de lupa/i)).toBeInTheDocument()
   })
 
-  it('should change its value when typing', async () => {
-    const onChangeMock = jest.fn()
-    render(<SearchInput onChange={onChangeMock} />)
+  it('should updates search value and search params on input change', async () => {
+    render(<SearchInput />)
 
     const inputElement = screen.getByRole('textbox')
-    const text = 'This is my new text'
+    const text = 'iron man'
 
     userEvent.type(inputElement, text)
 
+    await act(() => {
+      jest.advanceTimersByTime(4000)
+    })
+
     await waitFor(() => {
+      expect(window.location.search).toBe('?search=iron+man')
       expect(inputElement).toHaveValue(text)
-      expect(onChangeMock).toHaveBeenCalledTimes(text.length)
     })
   })
 })
