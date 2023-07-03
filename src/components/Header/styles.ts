@@ -1,9 +1,9 @@
-import { styled, css } from 'styled-components'
+import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
 export const Header = styled.header`
   ${({ theme }) => css`
-    max-width: 1280px;
+    max-width: 128rem;
     margin-inline: auto;
     width: 100%;
     display: grid;
@@ -15,7 +15,7 @@ export const Header = styled.header`
       grid-template-columns: 1fr;
 
       flex: 1;
-      gap: 16px;
+      gap:${theme.spacings.xsmall};
     `}
   `}
 `
