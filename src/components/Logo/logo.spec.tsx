@@ -1,5 +1,6 @@
 import { Logo } from '.'
-import { render, screen } from '../../utils/test-utils'
+import userEvent from '@testing-library/user-event'
+import { render, screen, waitFor } from '../../utils/test-utils'
 
 describe('<Logo/>', () => {
   it('should render logo with default size', () => {
@@ -20,5 +21,18 @@ describe('<Logo/>', () => {
     expect(logoElement).toBeInTheDocument()
     expect(logoElement).toHaveAttribute('width', '200')
     expect(logoElement).toHaveAttribute('height', '150')
+  })
+
+  it('should be redirected to the home when clicked', async () => {
+    render(<Logo />)
+
+    const linkElement = screen.getByRole('link')
+
+    expect(linkElement).toHaveAttribute('href', '/')
+    userEvent.click(linkElement)
+
+    await waitFor(() => {
+      expect(window.location.pathname).toBe(`/`)
+    })
   })
 })
