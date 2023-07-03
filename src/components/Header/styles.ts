@@ -13,8 +13,6 @@ export const Header = styled.header`
 
     ${media.lessThan('medium')`
       grid-template-columns: 1fr;
-
-      flex: 1;
       gap:${theme.spacings.xsmall};
     `}
   `}
