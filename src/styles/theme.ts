@@ -7,10 +7,10 @@ export default {
     radius: '1.6rem'
   },
   box: {
-    shadow: '0 8px 8px rgba(0, 0, 0, 0.08)'
+    shadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px'
   },
   font: {
-    family: 'var(--font-inter)',
+    family: 'Poppins, sans-serif',
     light: 300,
     normal: 400,
     bold: 700,
@@ -35,7 +35,7 @@ export default {
     gray_300: '#5D5D6D',
     gray_800: '#202024',
     black: '#0D0D0D',
-    red: '#de3838'
+    red: '#EC1D24'
   },
   spacings: {
     xxxsmall: '0.8rem',
