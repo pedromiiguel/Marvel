@@ -12,7 +12,11 @@ export const SearchInputContainer = styled.div`
     padding: ${theme.spacings.xxsmall} ${theme.spacings.xsmall};
 
     &:focus-within {
-      outline: 2px solid ${theme.colors.gray_200};
+      box-shadow: 0 0 0.5rem ${theme.colors.red};
+
+      svg {
+        color: ${theme.colors.red};
+      }
     }
   `}
 `
@@ -41,6 +45,9 @@ export const SearchInput = styled.input`
 
 export const IconContainer = styled.div`
   ${({ theme }) => css`
+    width: 2.4rem;
+    height: 2.4rem;
+
     > svg {
       color: ${theme.colors.gray_200};
     }

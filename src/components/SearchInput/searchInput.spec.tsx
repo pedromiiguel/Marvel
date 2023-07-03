@@ -1,19 +1,18 @@
-import { SearchInput } from '.'
 import userEvent from '@testing-library/user-event'
-import { act, render, screen, waitFor } from '../../utils/test-utils'
+import { SearchInput } from '.'
+import { render, screen, waitFor } from '../../utils/test-utils'
 
-jest.useFakeTimers()
 describe('<SearchInput/>', () => {
   it('should render correctly', () => {
     render(<SearchInput />)
 
-    expect(screen.getByRole('textbox')).toBeInTheDocument()
+    expect(screen.getByRole('searchbox')).toBeInTheDocument()
   })
 
   it('should render with placeholder', () => {
     render(<SearchInput placeholder="Search" />)
 
-    expect(screen.getByRole('textbox')).toBeInTheDocument()
+    expect(screen.getByRole('searchbox')).toBeInTheDocument()
     expect(screen.getByPlaceholderText(/Search/i)).toBeInTheDocument()
   })
 
@@ -26,17 +25,13 @@ describe('<SearchInput/>', () => {
   it('should updates search value and search params on input change', async () => {
     render(<SearchInput />)
 
-    const inputElement = screen.getByRole('textbox')
+    const inputElement = screen.getByRole('searchbox')
     const text = 'iron man'
 
     userEvent.type(inputElement, text)
 
-    await act(() => {
-      jest.advanceTimersByTime(4000)
-    })
-
     await waitFor(() => {
-      expect(window.location.search).toBe('?search=iron+man')
+      expect(window.location.search).toBe('?search=iron+man&page=1')
       expect(inputElement).toHaveValue(text)
     })
   })
