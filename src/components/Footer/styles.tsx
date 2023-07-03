@@ -1,20 +1,25 @@
-import { css } from 'styled-components'
-import { styled } from 'styled-components'
+import styled, { css } from 'styled-components'
+
+export const FooterWrapper = styled.div`
+  ${({ theme }) => css`
+    margin-top: ${theme.spacings.large};
+    border-top: 1px solid ${theme.colors.gray_300};
+    width: 100%;
+  `}
+`
 
 export const Footer = styled.footer`
   ${({ theme }) => css`
-    margin-top: ${theme.spacings.large};
-    padding: ${theme.spacings.small};
-    width: 100%;
+    max-width: 128rem;
+    margin-inline: auto;
+    padding: ${theme.spacings.small} ${theme.spacings.xsmall};
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     color: ${theme.colors.gray_50};
-
     font-size: ${theme.font.sizes.xsmall};
-    border-top: 1px solid ${theme.colors.gray_300};
   `}
 `
 
