@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "@types"],
+  "include": ["src", "@types", ".jest/server/handlers.ts", ".jest/server/server.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

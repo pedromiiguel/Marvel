@@ -27,7 +27,7 @@ const useCharacters = jest.spyOn(
 )
 describe('<Home/>', () => {
   it('should render loading state', () => {
-    useCharacters.mockReturnValue({
+    useCharacters.mockReturnValueOnce({
       characters: undefined,
       isLoading: true,
       totalPages: 0,
@@ -40,24 +40,7 @@ describe('<Home/>', () => {
   })
 
   it('should render text if there are no character', async () => {
-    useCharacters.mockReturnValue({
-      characters: { results: [] },
-      isLoading: false,
-      totalPages: 0,
-      page: 1
-    })
-
-    render(<Home />)
-
-    await waitFor(() =>
-      expect(
-        screen.getByText('Não encontramos nenhum herói.')
-      ).toBeInTheDocument()
-    )
-  })
-
-  it('should render text if there are no character', async () => {
-    useCharacters.mockReturnValue({
+    useCharacters.mockReturnValueOnce({
       characters: { results: [] },
       isLoading: false,
       totalPages: 0,
@@ -74,14 +57,14 @@ describe('<Home/>', () => {
   })
 
   it('should render characters', async () => {
-    useCharacters.mockReturnValue({
+    useCharacters.mockReturnValueOnce({
       characters: mockCharacters.data,
       isLoading: false,
       totalPages: 2,
       page: 1
     })
 
-    const { debug } = render(<Home />)
+    render(<Home />)
 
     const characterElements = screen.getAllByTestId('Mock Card')
     const paginationElements = screen.getByTestId('Mock Pagination')
@@ -90,7 +73,5 @@ describe('<Home/>', () => {
       expect(characterElements.length).toBe(mockCharacters.data.results.length)
       expect(paginationElements).toBeInTheDocument()
     })
-
-    debug()
   })
 })
