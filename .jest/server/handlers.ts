@@ -4,14 +4,14 @@ import { mockCharacters } from '../../src/mocks/characters'
 import { mockCharacter } from '../../src/mocks/character'
 
 export const handlers = [
-  rest.get(`${BASE_URL}/characters`, (req, res, ctx) => {
+  rest.get(`${BASE_URL}/characters`, (_, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({...mockCharacters})
     )
   }),
 
-  rest.get(`${BASE_URL}/characters/:characterId`, (req, res, ctx) => {
+  rest.get(`${BASE_URL}/characters/:characterId`, (_, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({...mockCharacter})
