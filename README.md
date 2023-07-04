@@ -72,6 +72,9 @@ $ npm install ou yarn
 $ npm dev ou yarn dev
 
 # O servidor inciará na porta:3000 - acesse http://127.0.0.1:5173/
+
+# Para rodar os testes precisa rodar o seguinte script
+$ npm run test:watch ou yarn test:watch
 ```
 
 ## :man_astronaut: Autor
